@@ -1,0 +1,18 @@
+---
+
+- name: install php
+  apt:
+    name: php
+    state: present
+
+- name: install composer
+  get_url:
+    url: "https://getcomposer.org/download/{{composer_version}}/composer.phar"
+    dest: /usr/bin/composer
+    mode: o=rx
+
+- name: install phpunit
+  get_url:
+    url: "https://phar.phpunit.de/phpunit-{{phpunit_version}}.phar"
+    dest: /usr/bin/phpunit
+    mode: o=rx

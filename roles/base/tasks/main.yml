@@ -1,0 +1,9 @@
+---
+
+
+- name: enable ufw firewal but allow http
+  ufw:
+    rule: limit
+    port: http
+    proto: tcp
+    state: enabled
