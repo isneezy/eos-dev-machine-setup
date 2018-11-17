@@ -1,0 +1,41 @@
+---
+
+- block:
+  - name: install nvm
+    raw: curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+    become: "{{local_user}}"
+
+  - name: "configure nvm"
+    template:
+      src: nvm.sh
+      dest: /etc/profile.d/nvm.sh
+      mode: +x
+
+- name: install nodejs latest LTS version.
+  raw: |
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+    nvm install --lts
+  become: "{{local_user}}"
+
+# donwload and install yarn
+- block:
+    - name: add yarn apt signing key
+      apt_key:
+        url: https://dl.yarnpkg.com/debian/pubkey.gpg
+
+    - name: add yarn apt repository
+      apt_repository:
+        repo: deb https://dl.yarnpkg.com/debian/ stable main
+
+    - name: install yarn
+      apt:
+        name: yarn
+        install_recommends: false
+
+- name: install yarn global packages
+  raw: yarn global add {{item}}
+  with_items: "{{yarn_packages}}"
+  become: "{{local_user}}"
+
