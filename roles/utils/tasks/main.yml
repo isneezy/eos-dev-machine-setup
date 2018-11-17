@@ -1,0 +1,16 @@
+---
+
+
+- name: Install gnome-disk-utility
+  apt:
+    name: gnome-disk-utility
+    state: present
+
+- block:
+  - name: Add pmv mepdia player ppa
+    apt_repository:
+      repo: ppa:mc3man/mpv-tests
+
+  - name: Install mpv media player video player
+    apt:
+      name: mpv
