@@ -2,6 +2,13 @@
 
 - hosts: localhost
   roles:
-    # - base
-    # - git
+    - base
+    - git
     - php
+    - utils
+    - node
+  tasks:
+    - name: "display post install message"
+      debug:
+        msg:
+          - 'things left to do:'
