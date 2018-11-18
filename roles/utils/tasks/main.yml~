@@ -1,9 +1,5 @@
 ---
 
-- name: Install firefox
-  apt:
-    name: firefox
-
 - name: Install gnome-disk-utility
   apt:
     name: gnome-disk-utility
