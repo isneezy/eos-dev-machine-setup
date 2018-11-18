@@ -1,0 +1,5 @@
+{
+  {% if docker__default_daemon_json | default() %}
+  {{ docker__default_daemon_json | indent(2, true)}}
+  {% endif %}
+}

@@ -1,0 +1,23 @@
+docker_edition: ce
+docker_chanel: stable
+docker_version: latest
+
+docker_compose_version: 1.23.0
+docker_compose_download_url: "https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-Linux-x86_64"
+
+docker__default_daemon_json_log_max_size: 1m
+docker__default_daemon_json_log_max_file: 10000
+
+docker__default_daemon_json: |
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "{{ docker__default_daemon_json_log_max_size }}",
+    "max-file": "{{ docker__default_daemon_json_log_max_file }}"
+  }
+
+docker__cron_jobs:
+  - name: "Docker disk clean up"
+    job: docker system prune -af &> /dev/null
+    schedule: ["0", "0", "*", "*", "0"]
+    cron_file: "docker-disk-clean-up"
+user: "root"

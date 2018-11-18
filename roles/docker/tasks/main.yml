@@ -1,0 +1,58 @@
+---
+
+# need to add cron jobs to purne docker system and free up storage
+
+- name: install dependencies
+  apt: name={{item}}
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+
+- block:
+  - name: add docker signing key
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+
+  - name: add doker repository
+    apt_repository:
+      repo: >
+        deb [arch=amd64]
+        https://download.docker.com/linux/ubuntu
+        bionic stable
+
+  - name: Install Docker
+    apt:
+      name: "docker-{{docker_edition}}"
+
+- name: create doker configuration directories
+  file:
+    path: "{{item}}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+  loop:
+    - /etc/docker
+    - /etc/systemd/system/docker.service.d
+
+- name: configure docker daemon options (json)
+  template:
+    src: daemon.json.j2
+    dest: /etc/docker/daemon.json
+
+- name: add local user to docker group
+  user:
+    name: "{{local_user}}"
+    groups: "docker"
+    append: true
+
+- name: Install Docker Compose
+  get_url:
+    url: "{{ docker_compose_download_url }}"
+    dest: "/usr/local/bin/docker-compose"
+    owner: "root"
+    group: "root"
+    mode: "0755"
+

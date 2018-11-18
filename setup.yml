@@ -7,8 +7,10 @@
     - php
     - utils
     - node
+    - docker
   tasks:
     - name: "display post install message"
       debug:
         msg:
           - 'things left to do:'
+          - 'Reboot your sistem!'
