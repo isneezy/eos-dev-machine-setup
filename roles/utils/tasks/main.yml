@@ -16,3 +16,7 @@
   - name: Install mpv media player video player
     apt:
       name: mpv
+
+- name: Install snapd
+  apt:
+    name: snapd
