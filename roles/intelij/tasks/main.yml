@@ -1,0 +1,5 @@
+---
+
+- block:
+  - name: Install PHP Storm
+    raw: snap install phpstorm --classic
