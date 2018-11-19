@@ -12,6 +12,7 @@
     - libgnome-keyring-dev
 
 # install git craken
-# - name: download and install git cracken
-#   apt:
-#     deb: https://release.gitkraken.com/linux/gitkraken-amd64.deb
+- name: download and install git cracken
+  apt:
+    deb: https://release.gitkraken.com/linux/gitkraken-amd64.deb
+

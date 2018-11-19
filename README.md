@@ -19,7 +19,7 @@ sudo apt install ansible
 Invoke the following as yourself, the primary use. Not root.
 
 ```bash
-ansible-playbook setup.yml -e "local_username=$(logname)" -K
+ansible-playbook setup.yml -e "local_username=$USER" -K
 ```
 
 ## What gets installed and cofigured?
@@ -32,4 +32,4 @@ Summary of packages that get installed and configured:
 - Firefox Web Browser
 - Enable ufw firewall and configure for incoming ssh
 - IDEs (PhpStorm)
-- Languages and Framworks (NodeJs, Yarn, Php, Composer)
+- Languages and Framworks (NodeJs, Yarn, vue-cli, Php, Composer)
