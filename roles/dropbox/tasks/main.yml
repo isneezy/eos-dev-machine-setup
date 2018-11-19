@@ -1,0 +1,6 @@
+---
+
+- name: install dropbox
+  apt:
+    name: nautilus-dropbox
+  when: install_dropbox

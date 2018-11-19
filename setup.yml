@@ -2,16 +2,18 @@
 
 - hosts: localhost
   roles:
-    - base
-    - utils
-    - git
-    - php
-    - node
-    - intelij
-    - docker
+    # - base
+    # - utils
+    # - git
+    # - php
+    # - node
+    # - intelij
+    # - docker
+    - dropbox
   tasks:
     - name: "display post install message"
       debug:
         msg:
           - 'things left to do:'
+          - 'dropbox start -i'
           - 'Reboot your sistem!'

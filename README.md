@@ -22,6 +22,10 @@ Invoke the following as yourself, the primary use. Not root.
 ansible-playbook setup.yml -e "local_username=$USER" -K
 ```
 
+## Environment variables flags to optionally discard roles or packages
+
+- `install_dropbox` `ansible-playbook setup.yml -e "install_dropbox=false" -e "local_username=$USER" -K` to skip dropbox installation
+
 ## What gets installed and cofigured?
 
 I am a Linux Systems Engineer and Software developer and my daily job include working with various config management using Ansible. So if you are in a similar profession the installed system will suit your needs. It is also easy to extend using Ansible roles.
