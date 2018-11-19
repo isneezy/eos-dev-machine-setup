@@ -3,10 +3,11 @@
 - hosts: localhost
   roles:
     - base
+    - utils
     - git
     - php
-    - utils
     - node
+    - intelij
     - docker
   tasks:
     - name: "display post install message"
