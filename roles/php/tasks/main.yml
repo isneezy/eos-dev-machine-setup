@@ -16,3 +16,8 @@
     url: "https://phar.phpunit.de/phpunit-{{phpunit_version}}.phar"
     dest: /usr/bin/phpunit
     mode: o=rx
+
+- name: make sure apache is not present
+  apt:
+    name: apache2
+    state: absent
