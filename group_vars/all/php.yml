@@ -1,4 +1,8 @@
 phpunit_version: 6.5
 composer_version: 1.7.3
 composer_packages:
-    - phpunit/phpunit
+  - phpunit/phpunit
+php_extensions:
+  - php-xml
+  - php-mbstring
+  - php-gd

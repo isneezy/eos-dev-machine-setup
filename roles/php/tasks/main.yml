@@ -5,6 +5,11 @@
     name: php
     state: present
 
+- name: insall extensions
+  apt:
+    name: "{{item}}"
+  loop: "{{php_extensions}}"
+
 - name: install composer
   get_url:
     url: "https://getcomposer.org/download/{{composer_version}}/composer.phar"
