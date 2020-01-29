@@ -16,7 +16,7 @@ sudo apt install ansible
 
 ## Running the playbooks to configure your system
 
-Invoke the following as yourself, the primary use. Not root.
+Invoke the following as yourself, the primary user. Not root.
 
 ```bash
 ansible-playbook setup.yml -e "local_username=$USER" -K
