@@ -1,3 +1,13 @@
 ---
-
+display_skipped_hosts: false
 local_user: ivan
+
+# Utilities
+firefox: true
+epiphany: false
+gnome_disk_utility: true
+pmv_media_player: true
+snapd: true
+pantheon_mail: false
+mailspring: true # requires snapd
+gitkraken: true # requires snapd
