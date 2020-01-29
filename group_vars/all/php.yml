@@ -6,3 +6,4 @@ php_extensions:
   - php-xml
   - php-mbstring
   - php-gd
+  - php-mysql

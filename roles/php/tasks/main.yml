@@ -3,24 +3,26 @@
 - name: install php
   apt:
     name: php
-    state: present
+    state: "{{ 'present' if php else 'absent' }}"
 
 - name: insall extensions
   apt:
-    name: "{{item}}"
-  loop: "{{php_extensions}}"
+    name: "{{ php_extensions }}"
+    state: "{{ 'present' if php else 'absent' }}"
 
 - name: install composer
   get_url:
     url: "https://getcomposer.org/download/{{composer_version}}/composer.phar"
     dest: /usr/bin/composer
     mode: o=rx
+  when: php
 
 - name: install phpunit
   get_url:
     url: "https://phar.phpunit.de/phpunit-{{phpunit_version}}.phar"
     dest: /usr/bin/phpunit
     mode: o=rx
+  when: php
 
 - name: make sure apache is not present
   apt:
