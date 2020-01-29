@@ -11,3 +11,4 @@ snapd: true
 pantheon_mail: false
 mailspring: true # requires snapd
 gitkraken: true # requires snapd
+rclone: true
