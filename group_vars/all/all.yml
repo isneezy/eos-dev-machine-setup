@@ -13,6 +13,8 @@ mailspring: true # requires snapd
 git: true
 gitkraken: true # requires snapd
 rclone: true
+yarn: true
 
 # Programming languages and libraries
 php: true
+nodejs: true
