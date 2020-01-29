@@ -10,5 +10,6 @@ pmv_media_player: true
 snapd: true
 pantheon_mail: false
 mailspring: true # requires snapd
+git: true
 gitkraken: true # requires snapd
 rclone: true

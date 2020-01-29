@@ -34,11 +34,4 @@
   become: true
   become_user: root
 
-- name: GitKraken
-  snap:
-    name: gitkraken
-    state: "{{ 'present' if snapd and gitkraken else 'absent' }}"
-  become: true
-  become_user: root
-
 - import_tasks: rclone.yml
