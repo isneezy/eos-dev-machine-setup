@@ -9,11 +9,13 @@
     - node
     - intelij
     - docker
-    - dropbox
+    - openjdk
   tasks:
-    - name: "display post install message"
+    - name: "Post post install recommendations message"
       debug:
         msg:
           - 'things left to do:'
-          - 'dropbox start -i'
-          - 'Reboot your sistem!'
+          - 'rclone config'
+          # - 'dropbox start -i'
+          - 'Reboot your sistem'
+          - 'Enjoy!'

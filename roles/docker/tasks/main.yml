@@ -54,6 +54,4 @@
   pip:
     name: docker-compose
     state: "{{ 'present' if docker else 'absent' }}"
-    extra_args: --user
-  become: "{{local_user}}"
 
