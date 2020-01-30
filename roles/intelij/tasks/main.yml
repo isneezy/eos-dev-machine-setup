@@ -1,5 +1,23 @@
 ---
 
-- block:
-  - name: Install PHP Storm
-    raw: snap install phpstorm --classic
+
+- name: PHP Storm
+  snap:
+    name: phpstorm
+    channel: "{{ idea_chanel }}"
+    classic: true
+    state: "{{ 'present' if phpstorm else 'absent'}}"
+
+- name: IDA Community Edition
+  snap:
+    name: intellij-idea-community
+    channel: "{{ idea_chanel }}"
+    classic: true
+    state: "{{ 'present' if intellij_idea_community else 'absent'}}"
+
+- name: IDA Ultimate Edition
+  snap:
+    name: intellij-idea-ultimate
+    channel: "{{ idea_chanel }}"
+    classic: true
+    state: "{{ 'present' if intellij_idea_ultimate else 'absent'}}"

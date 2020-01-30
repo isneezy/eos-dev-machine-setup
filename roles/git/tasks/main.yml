@@ -3,16 +3,20 @@
 - name: install git
   apt:
     name: git
-    state: present
+    state: "{{ 'present' if git else 'absent' }}"
 
 - name: install dependencies
-  apt: name="{{item}}"
-  with_items:
-    - libgnome-keyring-common
-    - libgnome-keyring-dev
+  apt:
+    name:
+      - libgnome-keyring-common
+      - libgnome-keyring-dev
+    state: "{{ 'present' if git else 'absent' }}"
 
 # install git craken
-- name: download and install git cracken
-  apt:
-    deb: https://release.gitkraken.com/linux/gitkraken-amd64.deb
+- name: GitKraken
+  snap:
+    name: gitkraken
+    state: "{{ 'present' if snapd and gitkraken else 'absent' }}"
+  become: true
+  become_user: root
 

@@ -1,22 +1,37 @@
 ---
 
-- name: Install firefox
+- name: Epiphany Web Browser
+  apt:
+    name: epiphany-browser
+    state: "{{ 'present' if epiphany else 'absent' }}"
+
+- name: Firefox Web Browser
   apt:
     name: firefox
+    state: "{{ 'present' if firefox else 'absent' }}"
 
-- name: Install gnome-disk-utility
+- name: Gnome Disk Utility
   apt:
     name: gnome-disk-utility
-
-- block:
-  - name: Add pmv mepdia player ppa
-    apt_repository:
-      repo: ppa:mc3man/mpv-tests
-
-  - name: Install mpv media player video player
-    apt:
-      name: mpv
+    state: "{{ 'present' if gnome_disk_utility else 'absent' }}"
 
 - name: Install snapd
   apt:
     name: snapd
+    state: "{{ 'present' if snapd else 'absent' }}"
+
+- import_tasks: pmv-player.yml
+
+- name: pantheon-mail
+  apt:
+    name: pantheon-mail
+    state: "{{ 'present' if pantheon_mail else 'absent' }}"
+
+- name: Mailspring
+  snap:
+    name: mailspring
+    state: "{{ 'present' if snapd and mailspring else 'absent' }}"
+  become: true
+  become_user: root
+
+- import_tasks: rclone.yml

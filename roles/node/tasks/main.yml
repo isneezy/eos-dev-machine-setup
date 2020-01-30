@@ -10,6 +10,7 @@
       src: nvm.sh
       dest: /etc/profile.d/nvm.sh
       mode: +x
+  when: nodejs
 
 - name: install nodejs latest LTS version.
   raw: |
@@ -18,6 +19,7 @@
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
     nvm install --lts
   become: "{{local_user}}"
+  when: nodejs
 
 # donwload and install yarn
 - block:
@@ -33,9 +35,11 @@
       apt:
         name: yarn
         install_recommends: false
+  when: nodejs and yarn
 
 - name: install yarn global packages
   raw: yarn global add {{item}}
   with_items: "{{yarn_packages}}"
   become: "{{local_user}}"
+  when: nodejs and yarn
 

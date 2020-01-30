@@ -1,0 +1,12 @@
+---
+
+- block:
+    - name: Add pmv mepdia player ppa
+      apt_repository:
+        repo: ppa:mc3man/mpv-tests
+        state: "{{ 'present' if pmv_media_player else 'absent' }}"
+
+    - name: Install mpv media player video player
+      apt:
+        name: mpv
+        state: "{{ 'present' if pmv_media_player else 'absent' }}"

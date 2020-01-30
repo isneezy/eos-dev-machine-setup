@@ -1,3 +1,30 @@
 ---
-
+display_skipped_hosts: false
 local_user: ivan
+
+# Utilities
+firefox: true
+epiphany: false
+gnome_disk_utility: true
+pmv_media_player: true
+snapd: true
+pantheon_mail: false
+mailspring: true # requires snapd
+git: true
+gitkraken: true # requires snapd
+rclone: true
+yarn: true
+
+# Programming languages and libraries
+php: true
+nodejs: true
+openjdk: true
+openjdk_version: 11
+
+# IDEs
+phpstorm: true
+intellij_idea_ultimate: true
+intellij_idea_community: false
+idea_chanel: 2018.1/stable
+
+docker: true
