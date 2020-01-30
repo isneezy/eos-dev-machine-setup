@@ -1,22 +1,17 @@
 ---
 
-# need to add cron jobs to purne docker system and free up storage
 
-- name: install dependencies
-  apt: name={{item}}
-  with_items:
-    - apt-transport-https
-    - ca-certificates
-    - curl
-    - software-properties-common
+# need to add cron jobs to purne docker system and free up storage
 
 - block:
   - name: add docker signing key
     apt_key:
       url: https://download.docker.com/linux/ubuntu/gpg
+    when: docker
 
-  - name: add doker repository
+  - name: add docker repository
     apt_repository:
+      state: "{{ 'present' if docker else 'absent' }}"
       repo: >
         deb [arch=amd64]
         https://download.docker.com/linux/ubuntu
@@ -24,15 +19,20 @@
 
   - name: Install Docker
     apt:
-      name: "docker-{{docker_edition}}"
+      name:
+        - "docker-{{docker_edition}}"
+        - "docker-{{docker_edition}}-cli"
+        - "containerd.io"
+      state: "{{ 'present' if docker else 'absent' }}"
 
-- name: create doker configuration directories
+- name: create docker configuration directories
   file:
     path: "{{item}}"
     state: directory
     owner: root
     group: root
     mode: 0755
+  when: docker
   loop:
     - /etc/docker
     - /etc/systemd/system/docker.service.d
@@ -41,18 +41,19 @@
   template:
     src: daemon.json.j2
     dest: /etc/docker/daemon.json
+  when: docker
 
 - name: add local user to docker group
   user:
     name: "{{local_user}}"
-    groups: "docker"
+    groups: docker
     append: true
+  when: docker
 
 - name: Install Docker Compose
-  get_url:
-    url: "{{ docker_compose_download_url }}"
-    dest: "/usr/local/bin/docker-compose"
-    owner: "root"
-    group: "root"
-    mode: "0755"
+  pip:
+    name: docker-compose
+    state: "{{ 'present' if docker else 'absent' }}"
+    extra_args: --user
+  become: "{{local_user}}"
 

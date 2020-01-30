@@ -1,5 +1,13 @@
 ---
 
+- name: install dependencies
+  apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+      - python-pip
 
 - name: enable ufw firewal but allow http
   ufw:
