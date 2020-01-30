@@ -1,0 +1,6 @@
+---
+# tasks file for roles/openjdk
+- name: OpenJDK
+  apt:
+    name: openjdk-{{openjdk_version}}-jdk-headless
+    state: "{{ 'present' if openjdk else 'absent' }}"

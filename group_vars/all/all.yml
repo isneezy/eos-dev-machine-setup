@@ -18,6 +18,8 @@ yarn: true
 # Programming languages and libraries
 php: true
 nodejs: true
+openjdk: true
+openjdk_version: 11
 
 # IDEs
 phpstorm: true

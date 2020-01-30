@@ -1,0 +1,4 @@
+---
+# defaults file for roles/openjdk
+openjdk_version: 11
+openjdk: true
