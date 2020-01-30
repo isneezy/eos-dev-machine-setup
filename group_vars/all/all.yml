@@ -18,3 +18,9 @@ yarn: true
 # Programming languages and libraries
 php: true
 nodejs: true
+
+# IDEs
+phpstorm: true
+intellij_idea_ultimate: true
+intellij_idea_community: false
+idea_chanel: 2018.1/stable
