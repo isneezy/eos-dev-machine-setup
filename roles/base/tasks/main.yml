@@ -15,3 +15,10 @@
     port: http
     proto: tcp
     state: enabled
+
+- name: Increasing the amount of inotify watchers
+  sysctl:
+    name: fs.inotify.max_user_watches
+    value: "{{ fs_inotify_max_user_watches }}"
+    state: present
+    reload: yes

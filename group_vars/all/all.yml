@@ -30,3 +30,6 @@ pycharm_community: false
 idea_chanel: 2018.1/stable
 
 docker: true
+
+# Configuration
+fs_inotify_max_user_watches: '524288'

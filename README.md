@@ -43,6 +43,7 @@ Every thing is optional and it can be chnaged in `group_vars/all/all.yml` file.
 - IDEs (PhpStorm, IDEA Community/Ultimate)
 - Languages and Framworks (NodeJs, Yarn, vue-cli, Php, Composer, OpenJDK)
 - Developer tools like docker, pip, docker-compose, yarn, vue-cli
+- Increase the amount of inotify watchers to 524288
 
 ## Issues and Todos
 
