@@ -25,6 +25,8 @@ openjdk_version: 11
 phpstorm: true
 intellij_idea_ultimate: true
 intellij_idea_community: false
+pycharm_professional: true
+pycharm_community: false
 idea_chanel: 2018.1/stable
 
 docker: true

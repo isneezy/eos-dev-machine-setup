@@ -8,16 +8,30 @@
     classic: true
     state: "{{ 'present' if phpstorm else 'absent'}}"
 
-- name: IDA Community Edition
+- name: IDEA Community Edition
   snap:
     name: intellij-idea-community
     channel: "{{ idea_chanel }}"
     classic: true
     state: "{{ 'present' if intellij_idea_community else 'absent'}}"
 
-- name: IDA Ultimate Edition
+- name: IDEA Ultimate Edition
   snap:
     name: intellij-idea-ultimate
     channel: "{{ idea_chanel }}"
     classic: true
     state: "{{ 'present' if intellij_idea_ultimate else 'absent'}}"
+
+- name: Pycharm Professional
+  snap:
+    name: pycharm-professional
+    channel: "{{ idea_chanel }}"
+    classic: true
+    state: "{{ 'present' if pycharm_professional else 'absent'}}"
+
+- name: Pycharm Community
+  snap:
+    name: pycharm-community
+    channel: "{{ idea_chanel }}"
+    classic: true
+    state: "{{ 'present' if pycharm_community else 'absent'}}"
