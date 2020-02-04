@@ -1,4 +1,4 @@
-# Elementary OS & Ubuntu dev machine setup
+e# Elementary OS & Ubuntu dev machine setup
 
 This repo contains Ansible playbooks to configure your system as a development machine upon a clean install. The playbooks should run in Debian based system but was only tested with Elementary OS 5.1
 
