@@ -1,4 +1,4 @@
-e# Elementary OS & Ubuntu dev machine setup
+# Elementary OS & Ubuntu dev machine setup
 
 This repo contains Ansible playbooks to configure your system as a development machine upon a clean install. The playbooks should run in Debian based system but was only tested with Elementary OS 5.1
 
@@ -23,7 +23,7 @@ sudo apt install ansible
 Before running the playbook and configure your system, update `group_vars/all/all.yml` file to suit your needs, by disabling things you don't want and enabling the ones you want.  
 Don't forget to chnage `local_username` variable to your own username or pass it as env var `-e "local_username=$USER"` whe running the playbook.
 
-Install dependencies with `ansible-galaxy install -r requirements.yml` and then invoke the following commad as yourself, the primary user. Not root.
+Invoke the following commad as yourself, the primary user. Not root.
 `ansible-playbook setup.yml` or `ansible-playbook setup.yml -e "local_username=$USER" -K` if you want to override the `local_username` variable in `group_vars/all/all.yml` file.
 
 ## What gets installed and cofigured?
